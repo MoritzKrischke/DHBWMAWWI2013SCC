@@ -9,6 +9,8 @@ public class Auto {
 	private String kennzeichen;
 	private int baujahr;
 	
+	private boolean hatBeule = false;
+	
 	// Definition von erlaubten Farben
 	public final String ERLAUBTE_FARBE_BLAU = "BLAU";
 	public final String ERLAUBTE_FARBE_ROT = "ROT";
@@ -23,12 +25,12 @@ public class Auto {
 	}
 
 
-	protected String getFarbe() {
+	public String getFarbe() {
 		return farbe;
 	}
 
 
-	protected void setFarbe(String farbe) {
+	public void setFarbe(String farbe) {
 		
 		// Übergabeparameter in Großbuchstaben um Tippfehler auszugleichen 
 		String upperCaseFarbe = farbe.toUpperCase();
@@ -47,7 +49,7 @@ public class Auto {
 	}
 
 
-	protected int getLeistung() {
+	public int getLeistung() {
 		return leistung;
 	}
 
@@ -69,7 +71,7 @@ public class Auto {
 	}
 
 
-	protected String getKennzeichen() {
+	public String getKennzeichen() {
 		return kennzeichen;
 	}
 
@@ -84,7 +86,7 @@ public class Auto {
 	}
 
 
-	protected void setBaujahr(int baujahr) {
+	private void setBaujahr(int baujahr) {
 		
 		int aktuellesJahr = new GregorianCalendar().get(GregorianCalendar.YEAR);
 		
@@ -97,7 +99,15 @@ public class Auto {
 			// Fehlerfall in der Validierung
 			System.err.println("Angegebenes Jahr (\"" + baujahr + "\") ist ungültig - Baujahr wurde gesetzt auf: " + this.baujahr);
 		}
-		
+	}
+	
+	
+	public void gegenTreten(){
+		this.hatBeule = true;
+	}
+	
+	public boolean hatBeule(){
+		return hatBeule;
 	}
 	
 	
