@@ -5,16 +5,18 @@ import java.util.GregorianCalendar;
 public class Auto {
 
 	private String farbe;
-	private int leistung;
+	private int leistung = 100;
 	private String kennzeichen;
 	private int baujahr;
+	
+	private static int autoZaehler = 0;
 	
 	private boolean hatBeule = false;
 	
 	// Definition von erlaubten Farben
-	public final String ERLAUBTE_FARBE_BLAU = "BLAU";
-	public final String ERLAUBTE_FARBE_ROT = "ROT";
-	public final String ERLAUBTE_FARBE_LILA = "LILA";
+	public static final String ERLAUBTE_FARBE_BLAU = "BLAU";
+	public static final String ERLAUBTE_FARBE_ROT = "RED";
+	public static final String ERLAUBTE_FARBE_LILA = "LILA";
 	
 	
 	public Auto(String farbe, int leistung, String kennzeichen, int baujahr){
@@ -22,6 +24,17 @@ public class Auto {
 		this.setLeistung(leistung);
 		this.setKennzeichen(kennzeichen);
 		this.setBaujahr(baujahr);
+		
+		autoZaehler++;
+	}
+	
+	public Auto(String kennzeichen, int baujahr){
+		this(ERLAUBTE_FARBE_BLAU, 100, kennzeichen, baujahr);
+		
+	}
+	
+	public Auto(int leistung, String farbe){
+		
 	}
 
 
@@ -32,17 +45,17 @@ public class Auto {
 
 	public void setFarbe(String farbe) {
 		
-		// Übergabeparameter in Großbuchstaben um Tippfehler auszugleichen 
+		// Ãœbergabeparameter in Grossbuchstaben um Tippfehler auszugleichen 
 		String upperCaseFarbe = farbe.toUpperCase();
 		
-		if(upperCaseFarbe == ERLAUBTE_FARBE_BLAU
-				|| upperCaseFarbe == ERLAUBTE_FARBE_LILA  
-				|| upperCaseFarbe == ERLAUBTE_FARBE_ROT ){
+		if(upperCaseFarbe.equals(ERLAUBTE_FARBE_BLAU)
+				|| upperCaseFarbe.equals(ERLAUBTE_FARBE_LILA)   
+				|| upperCaseFarbe.equals(ERLAUBTE_FARBE_ROT)){
 			this.farbe = farbe;
 		}else{
 			// Fehlerfall in der Validierung
 			this.farbe = ERLAUBTE_FARBE_BLAU;
-			System.err.println("Angegebene Farbe (\"" + upperCaseFarbe + "\") ist ungültig - Farbe wurde gesetzt auf: " + this.farbe);
+			System.err.println("Angegebene Farbe (\"" + upperCaseFarbe + "\") ist ungï¿½ltig - Farbe wurde gesetzt auf: " + this.farbe);
 		}
 		
 		
@@ -65,7 +78,7 @@ public class Auto {
 			this.leistung = leistung;
 		}else{
 			// Fehlerfall in der Validierung
-			System.err.println("Angegebene Leistung (\"" + leistung + "\") ist ungültig - Leistung wurde gesetzt auf: " + this.leistung);
+			System.err.println("Angegebene Leistung (\"" + leistung + "\") ist ungï¿½ltig - Leistung wurde gesetzt auf: " + this.leistung);
 		}
 		
 	}
@@ -97,7 +110,7 @@ public class Auto {
 			this.baujahr = baujahr;
 		}else{
 			// Fehlerfall in der Validierung
-			System.err.println("Angegebenes Jahr (\"" + baujahr + "\") ist ungültig - Baujahr wurde gesetzt auf: " + this.baujahr);
+			System.err.println("Angegebenes Jahr (\"" + baujahr + "\") ist ungï¿½ltig - Baujahr wurde gesetzt auf: " + this.baujahr);
 		}
 	}
 	
@@ -110,5 +123,8 @@ public class Auto {
 		return hatBeule;
 	}
 	
+	public static int getAutoZaehler(){
+		return autoZaehler;
+	}
 	
 }

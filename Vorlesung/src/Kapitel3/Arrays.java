@@ -1,4 +1,4 @@
-package kapitel3;
+package Kapitel3;
 
 public class Arrays {
 
