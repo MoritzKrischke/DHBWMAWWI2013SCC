@@ -9,6 +9,8 @@ public class Auto {
 	private String kennzeichen;
 	private int baujahr;
 	
+	private Reifen[] reifen = new Reifen[4];
+	
 	private static int autoZaehler = 0;
 	
 	private boolean hatBeule = false;
@@ -19,7 +21,7 @@ public class Auto {
 	public static final String ERLAUBTE_FARBE_LILA = "LILA";
 	
 	
-	public Auto(String farbe, int leistung, String kennzeichen, int baujahr){
+	private Auto(String farbe, int leistung, String kennzeichen, int baujahr){
 		this.setFarbe(farbe);
 		this.setLeistung(leistung);
 		this.setKennzeichen(kennzeichen);
@@ -28,7 +30,25 @@ public class Auto {
 		autoZaehler++;
 	}
 	
-	public Auto(String kennzeichen, int baujahr){
+	public Auto(String farbe, int leistung, String kennzeichen, int baujahr, Reifen[] reifen){
+		this(farbe, leistung, kennzeichen, baujahr);
+		
+		if(reifen.length == 4){
+		for(int i = 0; i < reifen.length; i++){
+			if(i < this.reifen.length){
+				this.reifen[i] = reifen[i];
+			}
+		}
+		}else{
+			for(int i = 0; i < this.reifen.length; i++){
+				this.reifen[i] = new Reifen();
+
+			}
+			
+		}
+	}
+	
+	private Auto(String kennzeichen, int baujahr){
 		this(ERLAUBTE_FARBE_BLAU, 100, kennzeichen, baujahr);
 		
 	}
@@ -126,5 +146,14 @@ public class Auto {
 	public static int getAutoZaehler(){
 		return autoZaehler;
 	}
+
+	protected void finalize(){
+		Auto.autoZaehler--;
+		System.err.println("Auto wurde verschrottet!!");
+		
+	}
+	
+	
+	
 	
 }
