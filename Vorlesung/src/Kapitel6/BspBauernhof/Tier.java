@@ -1,6 +1,6 @@
 package Kapitel6.BspBauernhof;
 
-public class Tier {
+public abstract class Tier {
 
 	private float gewicht;
 	private String bezeichnung;
@@ -12,15 +12,13 @@ public class Tier {
 		setGroesse(groesse);
 	}
 	
-	public void atmen(){
-		System.out.println("Das Tier atmet!");
-	}
+	public abstract void atmen();
 	
 	public void fressen(){
 		System.out.println("Das Tier frisst!");
 	}
 	
-	public void bewegen(){
+	public final void bewegen(){
 		System.out.println("Das Tier bewegt sich!");
 	}
 	
@@ -47,6 +45,14 @@ public class Tier {
 
 	public void setGroesse(float groesse) {
 		this.groesse = groesse;
+	}
+	
+	public String toString(){
+		String ausgabe = "Das Tier hat die Bezeichnung " + getBezeichnung() 
+				+ ", ist  " + getGewicht() + " schwer und " 
+				+ getGroesse() + " groß " + super.toString();
+		
+		return ausgabe;
 	}
 	
 	

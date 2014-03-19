@@ -11,9 +11,21 @@ public class Hund extends Tier{
 		
 	}
 	
+	public void atmen(){
+		System.out.println("Der Hund schnauft!");
+	}
+	
 	public void bellen(){
 		System.out.println("Wuff!");
+		
 	}
+	
+	@Override
+	public void fressen(){
+		super.fressen();
+		System.out.println("Der Hund frisst Fleisch!");
+	}
+
 
 	public String getRasse() {
 		return rasse;
@@ -21,6 +33,10 @@ public class Hund extends Tier{
 
 	public void setRasse(String rasse) {
 		this.rasse = rasse;
+	}
+	
+	public String toString(){
+		return "Der Hund " + getBezeichnung() + " " + super.toString();
 	}
 	
 	
