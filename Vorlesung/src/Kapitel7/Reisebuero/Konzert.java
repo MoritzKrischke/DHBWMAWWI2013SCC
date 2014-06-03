@@ -1,5 +1,7 @@
 package Kapitel7.Reisebuero;
 
+import Kapitel4.Uebungen.Ungerade;
+
 public class Konzert implements Reservierung{
 
 	private int freiePlaetze;
@@ -16,10 +18,16 @@ public class Konzert implements Reservierung{
 	}
 
 	@Override
-	public void buchePlaetze(int anzahl) {
+	public void buchePlaetze(int anzahl) throws NichtGenugFreiePlaetze, UngueltigeAnzahl{
+		if(anzahl < 1){
+			throw new UngueltigeAnzahl(anzahl);
+		}
+		
 		if(anzahl <= freiePlaetze){
 			freiePlaetze -= anzahl;
 			gebuchtePlaetze += anzahl;
+		}else{
+			throw new NichtGenugFreiePlaetze(freiePlaetze);
 		}
 		
 	}

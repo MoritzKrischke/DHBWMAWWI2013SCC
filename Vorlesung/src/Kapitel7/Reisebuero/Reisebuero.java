@@ -3,7 +3,7 @@ package Kapitel7.Reisebuero;
 public class Reisebuero {
 
 	
-	public static void main(String[] args) {
+	public static void main(String[] args){
 	
 		Reservierung reservieren1 = gibMirWasZumBuchen();
 		
@@ -11,7 +11,13 @@ public class Reisebuero {
 		
 		System.out.println(reservieren1.freiePlaetze());
 		
-		reservieren1.buchePlaetze(27);
+		try{
+			reservieren1.buchePlaetze(-5);
+		}catch(UngueltigeAnzahl e){
+			System.out.println("Fehler 2");
+		}catch(Exception e){
+			System.out.println("Fehler 1 : " + e.getMessage());
+		}
 		
 		System.out.println(reservieren1.freiePlaetze());
 		

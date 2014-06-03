@@ -37,7 +37,11 @@ public class Flugzeug implements Reservierung{
 	}
 
 	@Override
-	public void buchePlaetze(int anzahl) {
+	public void buchePlaetze(int anzahl) throws NichtGenugFreiePlaetze, UngueltigeAnzahl{
+		
+		if(anzahl < 1){
+			throw new UngueltigeAnzahl(anzahl);
+		}
 		
 		if(anzahl <= freiePlaetze()){
 			
@@ -49,8 +53,8 @@ public class Flugzeug implements Reservierung{
 					}
 				}
 			}
-			
-			
+		}else{
+			throw new NichtGenugFreiePlaetze(freiePlaetze());
 		}
 		
 	}
