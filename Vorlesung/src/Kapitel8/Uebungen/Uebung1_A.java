@@ -3,35 +3,25 @@ package Kapitel8.Uebungen;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class Uebung1 {
+public class Uebung1_A {
 
-	public static void main(String[] args) {
-		
+	public static void main(String[] args) throws IOException{
+
 		FileWriter datei;
-		
-		String text;
-		
-		try {
+		String text = "";
+
+
 			datei = new FileWriter("/ProgBsp/ausgabe.txt");
+
 			
-			text = "1\n";
-			
-			for(int i = 2; i <= 100; i++){
+
+			for (int i = 1; i <= 100; i++) {
 				text += i;
 				text += "\n";
 			}
-			
 			datei.write(text, 0, text.length());
-			
 			datei.flush();
-			
-		} catch (IOException e) {
-			System.out.println(e.getMessage());
-		}
-		
-		
-		
-		
+
 	}
 
 }
