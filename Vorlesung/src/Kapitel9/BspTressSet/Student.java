@@ -12,6 +12,29 @@ public class Student implements Comparable<Student>{
 	}
 	
 	@Override
+	public boolean equals(Object obj) {
+	
+		if(obj == this){
+			return true;
+		}
+		
+		if(obj == null){
+			return false;
+		}
+		
+		if(!(obj instanceof Student)){
+			return false;
+		}
+
+		if(this.getMatrikelNr() != ((Student)obj).getMatrikelNr()){ 
+			return false;
+		}
+
+		return true;
+		
+	}
+	
+	@Override
 	public int compareTo(Student o) {
 		int zwerg = this.getMatrikelNr() - o.getMatrikelNr();
 		return zwerg;
