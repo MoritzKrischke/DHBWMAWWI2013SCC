@@ -8,13 +8,14 @@ public class BspTreeSet {
 
 	public static void main(String[] args) {
 		
-		TreeSet<Student> menge = new TreeSet<Student>();
+		TreeSet<Student> menge = new TreeSet<Student>(new SortierungNachnameVorname());
 		
 		
 		menge.add(new Student(12345, "Klaus", "Kleber"));
 		menge.add(new Student(12389, "Gabi", "Gausel"));
 		menge.add(new Student(11111, "Ulf", "Uhu"));
 		menge.add(new Student(12111, "Lisa", "Hihi"));
+		menge.add(new Student(12389, "Rudi", "Müller"));
 		
 		Iterator<Student> i = menge.iterator();
 		

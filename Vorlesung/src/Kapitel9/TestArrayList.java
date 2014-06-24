@@ -1,6 +1,7 @@
 package Kapitel9;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 
 import Kapitel5.AutoBsp.Auto;
@@ -14,6 +15,7 @@ public class TestArrayList {
 		ArrayList<Auto> liste = new ArrayList<Auto>();
 
 		Auto meinAuto = new Auto(175, Auto.ERLAUBTE_FARBE_LILA);
+		
 		
 		liste.add(meinAuto);
 		
