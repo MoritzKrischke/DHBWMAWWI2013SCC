@@ -11,10 +11,17 @@ public class Vergleichen {
 		
 		Student sAlias = s1;
 		
+		System.out.println("HashCode S1: " + s1.hashCode());
+		System.out.println("HashCode sAlias: " + sAlias.hashCode());
+		
 		System.out.println("Speicheradressen:");
 		System.out.println("S1: " + s1.toString());
 		System.out.println("SAlias: " + sAlias.toString());
 		System.out.println("S2: " + s2.toString());
+		
+		
+		System.out.println("HashCode S1: " + s1.hashCode());
+		System.out.println("HashCode S2: " + s2.hashCode());
 		
 		
 		System.out.println("Vergleich s1 und s2:");

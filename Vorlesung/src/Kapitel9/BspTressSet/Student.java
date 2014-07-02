@@ -35,6 +35,11 @@ public class Student implements Comparable<Student>{
 	}
 	
 	@Override
+	public int hashCode() {
+		return this.getMatrikelNr();
+	}
+	
+	@Override
 	public int compareTo(Student o) {
 		int zwerg = this.getMatrikelNr() - o.getMatrikelNr();
 		return zwerg;
