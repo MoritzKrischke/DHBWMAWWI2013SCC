@@ -2,6 +2,8 @@ package Kapitel10;
 
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
@@ -22,9 +24,32 @@ public class BspGridLayout {
 		
 		fenster.setLayout(new GridLayout(0,2));
 		
+		final JLabel nameTxt = new JLabel("Name:");
+		final JTextField nameField = new JTextField(20);
 		
-		JLabel nameTxt = new JLabel("Name:");
-		JTextField nameField = new JTextField(20);
+		
+		
+		
+		ItemListener bizepsHoerer = new ItemListener() {
+			
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				if(e.getStateChange() == e.SELECTED){
+					System.out.println("Combobox geändert!");
+				
+					JComboBox box = (JComboBox)e.getSource();
+				
+					System.out.println(box.getSelectedItem());
+					System.out.println(e.getStateChange());
+					
+					nameTxt.setText("Neuer Wert gewählt!");
+					nameField.setText("Anderer Name");
+				}
+				
+			}
+		};
+		
+		nameField.setText("Murvin");
 		
 		JLabel buTxt = new JLabel("Bizepsumfang:");
 		//JTextField buField = new JTextField();
@@ -34,6 +59,7 @@ public class BspGridLayout {
 		Object[] werte = {40, 42, 44, 46};
 		
 		JComboBox buField = new JComboBox(werte);
+		buField.addItemListener(bizepsHoerer);
 		
 		Border rahmen = BorderFactory.createBevelBorder(BevelBorder.RAISED);
 		
